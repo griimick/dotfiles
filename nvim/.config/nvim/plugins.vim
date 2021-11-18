@@ -8,7 +8,6 @@ endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
 
-	Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 	" Better Syntax Support
 	Plug 'sheerun/vim-polyglot'
 
