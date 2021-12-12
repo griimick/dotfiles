@@ -8,4 +8,8 @@
 5. To setup neovim dotfiels, run `stow nvim`
 6. Run neovim to automatically install the plugins on first run
 
-TODO: Document additional steps to setup CoC
+## TODO 
+Document additional steps to setup CoC
+
+## References
+- [Using GNU Stow to manage your dotfiles](http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html)
