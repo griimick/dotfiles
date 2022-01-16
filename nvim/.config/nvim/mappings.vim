@@ -1,3 +1,12 @@
+" set leader key
+let g:mapleader = "\<Space>"
+
+" leader+ s to quick save in normal mode
+noremap <Leader>s :update<CR>
+
+" type kj to escape from insert mode
+inoremap kj <Esc>
+
 " Better nav for omnicomplete
 inoremap <expr> <c-j> ("\<C-n>")
 inoremap <expr> <c-k> ("\<C-p>")
