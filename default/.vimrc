@@ -33,14 +33,16 @@ set formatoptions-=cro                  " Stop newline continution of comments
 set incsearch                           " highlight the search results as you type
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" #AUTOCMD CUSTOM
 
+" Use 'relative' number in Normal mode and 'norelative' number in Insert mode
 augroup numbertoggle
 	autocmd!
 	autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 	autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
-set number relativenumber               " Show relative line numbers
+set number relativenumber  " Show relative line numbers
 
 " Trim trailing whitespaces on each line before writing a buffer
 fun! TrimWhitespace()
@@ -63,22 +65,32 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
+
+" syntax highlighting
 Plug 'sheerun/vim-polyglot'
-Plug 'scrooloose/NERDTree'
+" bracket pair same color
 Plug 'junegunn/rainbow_parentheses.vim'
+" BESTEST colorscheme
 Plug 'gruvbox-community/gruvbox'
+" status line
 Plug 'vim-airline/vim-airline'
+" fuzzy find my way out of my problems
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+" comment shortcut
 Plug 'tpope/vim-commentary'
+" git gud plugin
 Plug 'tpope/vim-fugitive'
+" Asynchronous Lint Engine
 Plug 'dense-analysis/ale'
+" Align by semicolor or equality symbols
 Plug 'godlygeek/tabular'
+
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" ALE 🍻 configuration
+" #ALE 🍻 config
+"
 let g:ale_linters = {'javascript': ['eslint'], 'javascript.jsx': ['eslint'] }
 let g:ale_sign_error = '>>' " Less aggressive than the default '>>'
 let g:ale_sign_warning = '--'
@@ -88,6 +100,7 @@ let b:ale_fixers = {'javascript': ['eslint']}
 let g:ale_fix_on_save = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" #POLYGOT config
 
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
@@ -105,6 +118,7 @@ let g:go_highlight_variable_declarations = 1
 let g:go_auto_sameids = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" #AIRLINE config
 
 " enable tabline
 let g:airline#extensions#tabline#enabled = 1
@@ -126,7 +140,8 @@ let g:airline_right_sep = ''
 set showtabline=2
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" setup the BESTEST colorscheme
+" #GRUVBOX config
+
 syntax on
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_invert_selection='0'
@@ -139,6 +154,37 @@ if (has("termguicolors"))
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" #FZF config
+
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+" Border color
+let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'sharp' } }
+
+let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline'
+
+"Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+"Get Files
+command! -bang -nargs=? -complete=dir Files
+	\ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" #CUSTOM MAPPINGS
 
 " set leader key
 let g:mapleader = "\<Space>"
