@@ -51,9 +51,6 @@ fun! TrimWhitespace()
 endfun
 "autocmd BufWritePre * :call TrimWhitespace()
 
-"vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
-
-
 " You can't stop me (force write changes to files which require write perms)
 "cmap w!! w !sudo tee %
 
@@ -65,5 +62,3 @@ let g:ale_lint_on_enter = 1 " Less distracting when opening a new file
 let g:ale_lint_on_insert_leave = 1
 let b:ale_fixers = {'javascript': ['eslint']}
 let g:ale_fix_on_save = 1
-
-let g:Hexokinase_highlighters = [ 'virtual' ]
