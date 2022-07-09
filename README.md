@@ -3,7 +3,10 @@
 repo includes personal dotfiles.
 
 ```bash
-		stow default
+
+	cd dotfiles
+
+	stow default
 
 ```
 
