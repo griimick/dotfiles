@@ -1,3 +1,26 @@
+" ────────────────────────────────────────
+" ─────────────▄▄██████████▄▄─────────────
+" ─────────────▀▀▀───██───▀▀▀─────────────
+" ─────▄██▄───▄▄████████████▄▄───▄██▄─────
+" ───▄███▀──▄████▀▀▀────▀▀▀████▄──▀███▄───
+" ──████▄─▄███▀──────────────▀███▄─▄████──
+" ─███▀█████▀▄████▄──────▄████▄▀█████▀███─
+" ─██▀──███▀─██████──────██████─▀███──▀██─
+" ──▀──▄██▀──▀████▀──▄▄──▀████▀──▀██▄──▀──
+" ─────███───────────▀▀───────────███─────
+" ─────██████████████████████████████─────
+" ─▄█──▀██──███───██────██───███──██▀──█▄─
+" ─███──███─███───██────██───███▄███──███─
+" ─▀██▄████████───██────██───████████▄██▀─
+" ──▀███▀─▀████───██────██───████▀─▀███▀──
+" ───▀███▄──▀███████────███████▀──▄███▀───
+" ─────▀███────▀▀██████████▀▀▀───███▀─────
+" ───────▀─────▄▄▄───██───▄▄▄──────▀──────
+" ──────────── ▀▀███████████▀▀ ───────────
+" ────────────────────────────────────────
+" Author: Soumik 'griimick' Pradhan
+" This is a part of my dotfiles: https://github.com/griimick/dotfiles
+
 syntax enable                           " Enables syntax highlighing
 set hidden                              " Required to keep multiple buffers open multiple buffers
 set nowrap                              " Display long lines as just one line
@@ -161,7 +184,8 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 " Border color
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'sharp' } }
 
-let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline'
+let $FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,output,node_modules,*.swp,dist,*.coffee}/*" 2> /dev/null'
+let $FZF_DEFAULT_OPTS = '--bind=ctrl-q:backward-kill-word --layout=reverse --info=inline'
 
 "Customize fzf colors to match your color scheme
 let g:fzf_colors =
@@ -183,6 +207,14 @@ let g:fzf_colors =
 command! -bang -nargs=? -complete=dir Files
 	\ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 
+let g:rg_command = '
+  \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
+  \ -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
+  \ -g "!*.{min.js,swp,o,zip}"
+  \ -g "!{.git,node_modules,vendor}/*" '
+
+command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " #CUSTOM MAPPINGS
 
@@ -195,12 +227,13 @@ noremap <Leader>s :update<CR>
 " type kj to escape from insert mode
 inoremap kj <Esc>
 
+" Use control-c instead of escape
+nnoremap <C-c> <Esc>
+
 " Tab/Shift-Tab in general mode will move to next/prev buffer
 nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprevious<CR>
 
-" Use control-c instead of escape
-nnoremap <C-c> <Esc>
 
 " Better tabbing (select in visual mode and use '>' and '<')
 vnoremap < <gv
@@ -229,8 +262,9 @@ vnoremap K :m '<-2<CR>gv=gv
 
 " fzf mappings
 nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
-nnoremap <C-p> :Files<CR>
-nnoremap <Leader>pf :Giles<CR>
+"nnoremap <C-p> :Files<CR>
+nnoremap <expr> <C-p> (len(system('git rev-parse')) ? ':Files' : ':GFiles --exclude-standard --others --cached')."\<CR>".expand('%:h')
+nnoremap <expr> <silent><leader>lr ":Files<CR>".expand('%:h')
 
 " Sweet Sweet FuGITive
 nmap <leader>gh :diffget //3<CR>
