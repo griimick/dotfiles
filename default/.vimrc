@@ -55,6 +55,63 @@ set formatoptions-=cro                  " Stop newline continution of comments
 "set autochdir                           " Your working directory will always be the same as your working directory
 set incsearch                           " highlight the search results as you type
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" #CUSTOM MAPPINGS
+
+" set leader key
+let g:mapleader = "\<Space>"
+
+" leader+ s to quick save in normal mode
+noremap <Leader>s :update<CR>
+
+" type kj to escape from insert mode
+inoremap kj <Esc>
+
+" Use control-c instead of escape
+nnoremap <C-c> <Esc>
+
+" Tab/Shift-Tab in general mode will move to next/prev buffer
+nnoremap <TAB> :bnext<CR>
+nnoremap <S-TAB> :bprevious<CR>
+
+
+" Better tabbing (select in visual mode and use '>' and '<')
+vnoremap < <gv
+vnoremap > >gv
+
+" Better window navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Easy to resize vertical splits
+nnoremap <Leader>= :vertical resize +5<CR>
+nnoremap <Leader>- :vertical resize -5<CR>
+
+" Open netrw file explorer on the right side
+nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+
+" vim-commentary
+nnoremap <space>/ :Commentary<CR>
+vnoremap <space>/ :Commentary<CR>
+
+" shift lines in visual mode
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+" fzf mappings
+nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
+"nnoremap <C-p> :Files<CR>
+nnoremap <expr> <C-p> (len(system('git rev-parse')) ? ':Files' : ':GFiles --exclude-standard --others --cached')."\<CR>".expand('%:h')
+nnoremap <expr> <silent><leader>lr ":Files<CR>".expand('%:h')
+
+" Sweet Sweet FuGITive
+nmap <leader>gh :diffget //3<CR>
+nmap <leader>gu :diffget //2<CR>
+nmap <leader>gs :G<CR>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " #AUTOCMD CUSTOM
 
@@ -184,7 +241,7 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 " Border color
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'sharp' } }
 
-let $FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,output,**/node_modules/**,*.swp,dist,*.coffee}/*" 2> /dev/null'
+let $FZF_DEFAULT_COMMAND='rg --files --follow -g "!{.git,output,**/node_modules/**,*.swp,dist,*.coffee}/*" 2> /dev/null'
 let $FZF_DEFAULT_OPTS = '--bind=ctrl-q:backward-kill-word --layout=reverse --info=inline'
 
 "Customize fzf colors to match your color scheme
@@ -215,58 +272,5 @@ let g:rg_command = '
 
 command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" #CUSTOM MAPPINGS
-
-" set leader key
-let g:mapleader = "\<Space>"
-
-" leader+ s to quick save in normal mode
-noremap <Leader>s :update<CR>
-
-" type kj to escape from insert mode
-inoremap kj <Esc>
-
-" Use control-c instead of escape
-nnoremap <C-c> <Esc>
-
-" Tab/Shift-Tab in general mode will move to next/prev buffer
-nnoremap <TAB> :bnext<CR>
-nnoremap <S-TAB> :bprevious<CR>
-
-
-" Better tabbing (select in visual mode and use '>' and '<')
-vnoremap < <gv
-vnoremap > >gv
-
-" Better window navigation
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
-" Easy to resize vertical splits
-nnoremap <Leader>= :vertical resize +5<CR>
-nnoremap <Leader>- :vertical resize -5<CR>
-
-" Open netrw file explorer on the right side
-nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
-
-" vim-commentary
-nnoremap <space>/ :Commentary<CR>
-vnoremap <space>/ :Commentary<CR>
-
-" shift lines in visual mode
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-
-" fzf mappings
-nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
-"nnoremap <C-p> :Files<CR>
-nnoremap <expr> <C-p> (len(system('git rev-parse')) ? ':Files' : ':GFiles --exclude-standard --others --cached')."\<CR>".expand('%:h')
-nnoremap <expr> <silent><leader>lr ":Files<CR>".expand('%:h')
-
-" Sweet Sweet FuGITive
-nmap <leader>gh :diffget //3<CR>
-nmap <leader>gu :diffget //2<CR>
-nmap <leader>gs :G<CR>
+" command! -bar MoveBack if &buftype == 'nofile' && (winwidth(0) < &columns / 3 || winheight(0) < &lines / 3) | execute "normal! \<c-w>\<c-p>" | endif
+" nnoremap <silent> <Leader><Leader> :MoveBack<BAR>Files<CR>
