@@ -184,7 +184,7 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 " Border color
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'sharp' } }
 
-let $FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,output,node_modules,*.swp,dist,*.coffee}/*" 2> /dev/null'
+let $FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,output,**/node_modules/**,*.swp,dist,*.coffee}/*" 2> /dev/null'
 let $FZF_DEFAULT_OPTS = '--bind=ctrl-q:backward-kill-word --layout=reverse --info=inline'
 
 "Customize fzf colors to match your color scheme
@@ -203,9 +203,9 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-"Get Files
-command! -bang -nargs=? -complete=dir Files
-	\ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+""Get Files
+"command! -bang -nargs=? -complete=dir Files
+"	\ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 
 let g:rg_command = '
   \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
