@@ -1,12 +1,15 @@
-# dotfiles
-
-repo includes personal dotfiles.
+<div id="header" align="center">
+<img src="/assets/heart-pirate-dark.png#gh-dark-mode-only" alt="Heart-Pirate-Dark" style="width: 30%;">
+<img src="/assets/heart-pirate-light.png#gh-light-mode-only" alt="Heart-Pirate-Light" style="width: 30%;">
+<h1>dotfiles</h1>
+<p> Yes, another one of those dotfiles. </p>
+</div>
 
 ```bash
 
-	cd dotfiles
+		$ cd dotfiles
 
-	stow default
+		$ stow default
 
 ```
 
