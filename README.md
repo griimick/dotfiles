@@ -18,6 +18,7 @@ repo includes personal dotfiles.
 4. nvim (flavoured vim)
 5. ripgrep (flavoured grep)
 6. bat (flavoured cat)
+7. fd (flavoured find)
 
 ## References
 - [Using GNU Stow to manage your dotfiles](http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html)

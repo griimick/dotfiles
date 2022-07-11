@@ -103,9 +103,7 @@ vnoremap K :m '<-2<CR>gv=gv
 
 " fzf mappings
 nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
-"nnoremap <C-p> :Files<CR>
 nnoremap <expr> <C-p> (len(system('git rev-parse')) ? ':Files' : ':GFiles --exclude-standard --others --cached')."\<CR>".expand('%:h')
-nnoremap <expr> <silent><leader>lr ":Files<CR>".expand('%:h')
 
 " Sweet Sweet FuGITive
 nmap <leader>gh :diffget //3<CR>
