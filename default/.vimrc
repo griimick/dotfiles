@@ -164,6 +164,11 @@ Plug 'dense-analysis/ale'
 " Align by semicolor or equality symbols
 Plug 'godlygeek/tabular'
 
+if (has("nvim"))
+	" GitHub copilot works in nvim only
+	Plug 'github/copilot.vim'
+endif
+
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
