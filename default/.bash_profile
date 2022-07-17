@@ -64,6 +64,10 @@ alias ggup='git log --branches --not --remotes --no-walk --decorate --oneline' #
 alias gll='git log --graph --pretty=oneline --abbrev-commit'
 alias gnew='git log HEAD@{1}..HEAD@{0}' # Show commits since last pull, see http://blogs.atlassian.com/2014/10/advanced-git-aliases/
 alias gwc='git whatchanged'
+# status
+alias gs='git status'
+
+alias erg='rg --color=always --vimgrep'
 
 export BAT_THEME="gruvbox-dark"
 

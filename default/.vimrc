@@ -62,6 +62,9 @@ set incsearch                           " highlight the search results as you ty
 " set leader key
 let g:mapleader = "\<Space>"
 
+" clear search highlights
+nnoremap <Leader><Leader> :nohlsearch<CR><C-L>
+
 " leader+ s to quick save in normal mode
 noremap <Leader>s :update<CR>
 
