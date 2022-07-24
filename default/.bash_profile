@@ -35,7 +35,7 @@ alias vi='vim'
 
 # ls aliases
 
-alias ll='ls -alF'
+alias ll='ls -alF --group-directories-first'
 alias la='ls -A'
 alias l='ls -CF'
 

@@ -167,7 +167,14 @@ Plug 'dense-analysis/ale'
 " Align by semicolor or equality symbols
 Plug 'godlygeek/tabular'
 
+" Straight up from Tokyo
+" Plug 'ghifarit53/tokyonight-vim'
+
 if (has("nvim"))
+
+	" Straight up from Tokyo
+	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+
 	" GitHub copilot works in nvim only
 	Plug 'github/copilot.vim'
 endif
@@ -183,7 +190,7 @@ let g:ale_sign_warning = '--'
 let g:ale_lint_on_enter = 1 " Less distracting when opening a new file
 let g:ale_lint_on_insert_leave = 1
 let b:ale_fixers = {'javascript': ['eslint']}
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " #POLYGOT config
@@ -229,9 +236,6 @@ set showtabline=2
 " #GRUVBOX config
 
 syntax on
-let g:gruvbox_contrast_dark = 'hard'
-let g:gruvbox_invert_selection='0'
-colorscheme gruvbox
 
 hi Normal guibg=NONE ctermbg=NONE
 hi SignColumn guibg=NONE ctermbg=NONE
@@ -241,6 +245,15 @@ if (has("termguicolors"))
 	set termguicolors
 	hi LineNr ctermbg=NONE guibg=NONE
 endif
+
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_invert_selection='0'
+
+let g:tokyonight_style = 'storm'
+let g:tokyonight_transparent_background = 1
+let g:tokyonight_transparent = 1
+
+colorscheme tokyonight
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " #FZF config
