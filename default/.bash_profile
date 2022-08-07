@@ -33,6 +33,11 @@ EOF
 alias vim='nvim'
 alias vi='vim'
 
+alias gcc=/usr/bin/gcc
+alias g++=/usr/bin/g++
+alias cc=/usr/bin/gcc
+alias c++=/usr/bin/g++
+
 # ls aliases
 
 alias ll='ls -alF --group-directories-first'
