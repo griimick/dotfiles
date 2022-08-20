@@ -175,8 +175,6 @@ if (has("nvim"))
 	" Straight up from Tokyo
 	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
-	" GitHub copilot works in nvim only
-	Plug 'github/copilot.vim'
 endif
 
 call plug#end()

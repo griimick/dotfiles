@@ -30,8 +30,8 @@ EOF
 # both refer same plugins and config, so 95% similar
 # 5% is all it takes to become BLAZINGLY FAST!!
 
-alias vim='nvim'
 alias vi='vim'
+alias vim='nvim'
 
 alias gcc=/usr/bin/gcc
 alias g++=/usr/bin/g++
