@@ -117,13 +117,13 @@ nmap <leader>gs :G<CR>
 " #AUTOCMD CUSTOM
 
 " Use 'relative' number in Normal mode and 'norelative' number in Insert mode
-augroup numbertoggle
-	autocmd!
-	autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-	autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-augroup END
+" augroup numbertoggle
+" 	autocmd!
+" 	autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+" 	autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+" augroup END
 
-set number relativenumber  " Show relative line numbers
+set number  " Show relative line numbers
 
 " Trim trailing whitespaces on each line before writing a buffer
 fun! TrimWhitespace()
