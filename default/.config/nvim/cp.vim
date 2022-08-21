@@ -24,8 +24,8 @@ function! TermWrapper(command) abort
 	autocmd BufEnter <buffer> startinsert
 endfunction
 
-command! -nargs=0 CompileAndRun call TermWrapper(printf('g++ -std=c++11 %s && ./a.out', expand('%')))
-command! -nargs=1 -complete=file CompileAndRunWithFile call TermWrapper(printf('g++ -std=c++11 %s && ./a.out < %s', expand('%'), <q-args>))
+command! -nargs=0 CompileAndRun call TermWrapper(printf('g++ -std=c++11 -DGRIIMICK %s && ./a.out', expand('%')))
+command! -nargs=1 -complete=file CompileAndRunWithFile call TermWrapper(printf('g++ -std=c++11 -DGRIIMICK %s && ./a.out < %s', expand('%'), <q-args>))
 autocmd FileType cpp nnoremap <leader>fw :CompileAndRun<CR>
 
 " For those of you that like to use the default ./a.out
@@ -35,7 +35,7 @@ autocmd FileType cpp nnoremap <leader>fw :CompileAndRun<CR>
 " output executable!
 augroup CppToolkit
 	autocmd!
-	autocmd FileType cpp nnoremap <leader>fb :!g++ -std=c++11 % && ./a.out<CR>
+	autocmd FileType cpp nnoremap <leader>fb :!g++ -std=c++11 -DGRIIMICK % && ./a.out<CR>
 	autocmd FileType cpp nnoremap <leader>fr :!./a.out<CR>
 	autocmd FileType cpp nnoremap <leader>fw :CompileAndRun<CR>
 augroup END
@@ -46,16 +46,16 @@ augroup END
 " of terminals for your own preference.
 augroup CppToolkit
 	autocmd!
-	autocmd FileType cpp nnoremap <leader>fb :!g++ -std=c++11 -o %:r % && ./%:r<CR>
+	autocmd FileType cpp nnoremap <leader>fb :!g++ -std=c++11 -DGRIIMICK -o %:r % && ./%:r<CR>
 	autocmd FileType cpp nnoremap <leader>fr :!./%:r.out<CR>
 augroup END
 
 " options
 " choose between 'vertical' and 'horizontal' for how the terminal window is split
 " (default is vertical)
-let g:split_term_style = 'horizontal'
+let g:split_term_style = 'vertical'
 
 " add a custom command to resize the terminal window to your preference
 " (default is to split the screen equally)
-let g:split_term_resize_cmd = 'resize 6'
+let g:split_term_resize_cmd = 'resize 50'
 " (or let g:split_term_resize_cmd = 'vertical resize 40')
