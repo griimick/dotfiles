@@ -123,7 +123,8 @@ nmap <leader>gs :G<CR>
 " 	autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 " augroup END
 
-set number  " Show relative line numbers
+" set number relativenumber  " Show relative line numbers
+set number
 
 " Trim trailing whitespaces on each line before writing a buffer
 fun! TrimWhitespace()
@@ -181,14 +182,20 @@ call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " #ALE 🍻 config
-"
-let g:ale_linters = {'javascript': ['eslint'], 'javascript.jsx': ['eslint'] }
+
+let g:ale_completion_enabled = 1
+let g:ale_linters = {'javascript': ['eslint'], 'javascript.jsx': ['eslint'], 'typescript': ['eslint'] }
 let g:ale_sign_error = '>>' " Less aggressive than the default '>>'
 let g:ale_sign_warning = '--'
 let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
 let g:ale_lint_on_insert_leave = 0
-let b:ale_fixers = {'javascript': ['eslint']}
+let b:ale_fixers = {'javascript': ['eslint'], 'typescript': ['eslint']}
 let g:ale_fix_on_save = 0
+let g:ale_pattern_options = {
+\ '.*node_modules.*$': {'ale_enabled': 0},
+\ '.*dist.*$': {'ale_enabled': 0},
+\ '.*-config.js$': {'ale_enabled': 0},
+\}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " #POLYGOT config
