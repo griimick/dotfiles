@@ -1,0 +1,21 @@
+{
+    "env": {
+        "node": true,
+        "es2021": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "rules": {
+        "indent": ["warn", "tab", { "SwitchCase" : 1 }],
+        "linebreak-style": ["warn", "unix"],
+        "quotes": ["off", "single"],
+        "semi": ["warn", "always"],
+		"no-unused-vars": ["warn"],
+		"space-before-function-paren": ["warn", "always"],
+		"func-call-spacing": ["warn", "always"],
+		"eqeqeq" : ["warn", "always"],
+		"no-unreachable" : ["warn"]
+    }
+}
