@@ -178,7 +178,29 @@ if (has("nvim"))
 
 endif
 
+" Deoplete 
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" show completion results from syntax highliting file
+Plug 'Shougo/neco-syntax'
+" lsp support for deoplete
+Plug 'lighttiger2505/deoplete-vim-lsp'
+" vim lsp support
+Plug 'prabirshrestha/vim-lsp'
+" easy lsp server installation
+Plug 'mattn/vim-lsp-settings'
+
 call plug#end()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" #Deoplete config 
+
+let g:deoplete#enable_at_startup = 1
+
+" Deoplete mappings (use c-j and c-k to navigate selection)
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+let g:lsp_diagnostics_enabled = 0
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " #ALE 🍻 config
@@ -259,7 +281,7 @@ let g:tokyonight_style = 'storm'
 let g:tokyonight_transparent_background = 1
 let g:tokyonight_transparent = 1
 
-colorscheme tokyonight
+colorscheme gruvbox
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " #FZF config
