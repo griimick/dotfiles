@@ -265,6 +265,10 @@ set showtabline=2
 
 syntax on
 
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_invert_selection='0'
+let g:gruvbox_transparent_bg = 1
+
 hi Normal guibg=NONE ctermbg=NONE
 hi SignColumn guibg=NONE ctermbg=NONE
 
@@ -274,14 +278,14 @@ if (has("termguicolors"))
 	hi LineNr ctermbg=NONE guibg=NONE
 endif
 
-let g:gruvbox_contrast_dark = 'hard'
-let g:gruvbox_invert_selection='0'
+autocmd vimenter * highlight Normal guibg=NONE ctermbg=NONE
+
+colorscheme gruvbox
 
 let g:tokyonight_style = 'storm'
 let g:tokyonight_transparent_background = 1
 let g:tokyonight_transparent = 1
 
-colorscheme gruvbox
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " #FZF config
