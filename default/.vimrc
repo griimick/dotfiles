@@ -28,7 +28,7 @@ set encoding=utf-8                      " The encoding displayed
 set pumheight=10                        " Makes popup menu smaller
 set fileencoding=utf-8                  " The encoding written to file
 set ruler                               " Show the cursor position all the time
-set cmdheight=2                         " More space for displaying messages
+set cmdheight=1                         " More space for displaying messages
 set iskeyword+=-                      	" treat dash separated words as a word text object"
 set mouse=a                             " Enable your mouse
 set splitbelow                          " Horizontal splits will automatically be below
@@ -161,40 +161,17 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " comment shortcut
 Plug 'tpope/vim-commentary'
-" git gud plugin
-Plug 'tpope/vim-fugitive'
 " Asynchronous Lint Engine
 Plug 'dense-analysis/ale'
 " Align by semicolor or equality symbols
 Plug 'godlygeek/tabular'
-
-" Straight up from Tokyo
-" Plug 'ghifarit53/tokyonight-vim'
-
-if (has("nvim"))
-
-	" Straight up from Tokyo
-	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-
-endif
-
-" Deoplete 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" show completion results from syntax highliting file
-Plug 'Shougo/neco-syntax'
-" lsp support for deoplete
-Plug 'lighttiger2505/deoplete-vim-lsp'
-" vim lsp support
-Plug 'prabirshrestha/vim-lsp'
-" easy lsp server installation
-Plug 'mattn/vim-lsp-settings'
 
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " #Deoplete config 
 
-let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 0
 
 " Deoplete mappings (use c-j and c-k to navigate selection)
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
@@ -205,7 +182,7 @@ let g:lsp_diagnostics_enabled = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " #ALE 🍻 config
 
-let g:ale_completion_enabled = 1
+let g:ale_completion_enabled = 0
 let g:ale_linters = {'javascript': ['eslint'], 'javascript.jsx': ['eslint'], 'typescript': ['eslint'] }
 let g:ale_sign_error = '>>' " Less aggressive than the default '>>'
 let g:ale_sign_warning = '--'
@@ -257,9 +234,6 @@ let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 
-" Always show tabs
-set showtabline=2
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " #GRUVBOX config
 
@@ -281,11 +255,6 @@ endif
 autocmd vimenter * highlight Normal guibg=NONE ctermbg=NONE
 
 colorscheme gruvbox
-
-let g:tokyonight_style = 'storm'
-let g:tokyonight_transparent_background = 1
-let g:tokyonight_transparent = 1
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " #FZF config

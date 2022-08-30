@@ -1,5 +1,4 @@
 #include <algorithm>
-#include <array>
 #include <bitset>
 #include <cassert>
 #include <chrono>
@@ -7,13 +6,19 @@
 #include <cstring>
 #include <functional>
 #include <iomanip>
-#include <iostream>
-#include <map>
+#include <iostream> // <ios,streambuf,istream,ostream,iosfwd> cout,cerr,endl,flush,ends,
 #include <numeric>
-#include <queue>
 #include <random>
-#include <set>
+
+// Containers // list, dequeue, forward_list omitted
+#include <array>
+#include <stack>
+#include <queue>
 #include <vector>
+#include <unordered_map>
+#include <unordered_set>
+#include <map>
+#include <set>
 using namespace std;
 
 // quickly log variables in `(var): value` format using `dbg(var)`
@@ -26,21 +31,24 @@ template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr
 #endif
 
 class Solution {
+public:
 	void solve();
 };
 
-void runCase() {
+void runCase(int caseNum) {
 	// read input and print output
-	// Solution sol
+	// Solution sol; 
+	// cout << "Case #" << caseNum << ": " << '\n';
 }
 
 
 int main(int argc, char **argv) {
 	int cases;
 	cin >> cases;
+	int caseNum = 0;
 
-	while (cases--) {
-		runCase();
+	while (caseNum++ < cases) {
+		runCase(caseNum);
 	}
 	cout << flush;
 	return 0;
