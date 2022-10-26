@@ -1,23 +1,23 @@
-"                                         
-"              ▄▄██████████▄▄             
-"              ▀▀▀   ██   ▀▀▀             
-"      ▄██▄   ▄▄████████████▄▄   ▄██▄     
-"    ▄███▀  ▄████▀▀▀    ▀▀▀████▄  ▀███▄   
-"   ████▄ ▄███▀              ▀███▄ ▄████  
-"  ███▀█████▀▄████▄      ▄████▄▀█████▀███ 
-"  ██▀  ███▀ ██████      ██████ ▀███  ▀██ 
-"   ▀  ▄██▀  ▀████▀  ▄▄  ▀████▀  ▀██▄  ▀  
-"      ███           ▀▀           ███     
-"      ██████████████████████████████     
-"  ▄█  ▀██  ███   ██    ██   ███  ██▀  █▄ 
-"  ███  ███ ███   ██    ██   ███▄███  ███ 
-"  ▀██▄████████   ██    ██   ████████▄██▀ 
-"   ▀███▀ ▀████   ██    ██   ████▀ ▀███▀  
-"    ▀███▄  ▀███████    ███████▀  ▄███▀   
-"      ▀███    ▀▀██████████▀▀▀   ███▀     
-"        ▀     ▄▄▄   ██   ▄▄▄      ▀      
-"              ▀▀███████████▀▀            
-"                                         
+"
+"              ▄▄██████████▄▄
+"              ▀▀▀   ██   ▀▀▀
+"      ▄██▄   ▄▄████████████▄▄   ▄██▄
+"    ▄███▀  ▄████▀▀▀    ▀▀▀████▄  ▀███▄
+"   ████▄ ▄███▀              ▀███▄ ▄████
+"  ███▀█████▀▄████▄      ▄████▄▀█████▀███
+"  ██▀  ███▀ ██████      ██████ ▀███  ▀██
+"   ▀  ▄██▀  ▀████▀  ▄▄  ▀████▀  ▀██▄  ▀
+"      ███           ▀▀           ███
+"      ██████████████████████████████
+"  ▄█  ▀██  ███   ██    ██   ███  ██▀  █▄
+"  ███  ███ ███   ██    ██   ███▄███  ███
+"  ▀██▄████████   ██    ██   ████████▄██▀
+"   ▀███▀ ▀████   ██    ██   ████▀ ▀███▀
+"    ▀███▄  ▀███████    ███████▀  ▄███▀
+"      ▀███    ▀▀██████████▀▀▀   ███▀
+"        ▀     ▄▄▄   ██   ▄▄▄      ▀
+"              ▀▀███████████▀▀
+"
 " Author: Soumik 'griimick' Pradhan
 " This is a part of my dotfiles: https://github.com/griimick/dotfiles
 
@@ -142,9 +142,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 Plug 'sheerun/vim-polyglot'
 " bracket pair same color (need)
 Plug 'junegunn/rainbow_parentheses.vim'
-" BESTEST colorscheme 
+" BESTEST colorscheme
 Plug 'gruvbox-community/gruvbox'
-" Neoculture 
+" Neoculture
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 " bye bye airline
 Plug 'itchyny/lightline.vim'
@@ -153,7 +153,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " comment shortcut (god gift)
 Plug 'tpope/vim-commentary'
-" Asynchronous Lint Engine 
+" Asynchronous Lint Engine
 Plug 'dense-analysis/ale'
 " OCD prevention
 Plug 'godlygeek/tabular'
@@ -161,7 +161,7 @@ Plug 'godlygeek/tabular'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" #Deoplete config 
+" #Deoplete config
 
 let g:deoplete#enable_at_startup = 0
 
@@ -177,14 +177,14 @@ let g:lsp_diagnostics_enabled = 0
 let g:ale_completion_enabled = 0
 " prettier too soft for my OCD
 let g:ale_linters = {
-  'javascript': ['eslint'], 
-  'javascript.jsx': ['eslint'], 
-  'typescript': ['eslint'] 
-}
+\  'javascript': ['eslint'],
+\  'javascript.jsx': ['eslint'],
+\  'typescript': ['eslint']
+\}
 let b:ale_fixers = {
-  'javascript': ['eslint'], 
-  'typescript': ['eslint']
-}
+\  'javascript': ['eslint'],
+\  'typescript': ['eslint']
+\}
 let g:ale_sign_error = '>>' " Less aggressive than the default '>>'
 let g:ale_sign_warning = '--'
 let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
