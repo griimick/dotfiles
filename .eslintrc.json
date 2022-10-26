@@ -1,0 +1,21 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "rules": {
+        "indent": ["off", "tab", { "SwitchCase" : 1 }],
+        "linebreak-style": ["warn", "unix"],
+        "quotes": ["off", "single"],
+        "semi": ["warn", "always"],
+		"no-unused-vars": ["warn"],
+		"space-before-function-paren": ["warn", "always"],
+		"eqeqeq" : ["warn", "always"],
+        "no-mixed-spaces-and-tabs" : ["warn"]
+    }
+}

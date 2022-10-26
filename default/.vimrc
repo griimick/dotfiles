@@ -71,9 +71,6 @@ noremap <Leader>s :update<CR>
 " type kj to escape from insert mode
 inoremap kj <Esc>
 
-" Use control-c instead of escape
-nnoremap <C-c> <Esc>
-
 " Tab/Shift-Tab in general mode will move to next/prev buffer
 nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprevious<CR>
@@ -82,12 +79,6 @@ nnoremap <S-TAB> :bprevious<CR>
 " Better tabbing (select in visual mode and use '>' and '<')
 vnoremap < <gv
 vnoremap > >gv
-
-" Better window navigation
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
 
 " Easy to resize vertical splits
 nnoremap <Leader>= :vertical resize +5<CR>
@@ -98,7 +89,6 @@ nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 
 " vim-commentary
 nnoremap <space>/ :Commentary<CR>
-vnoremap <space>/ :Commentary<CR>
 
 " shift lines in visual mode
 vnoremap J :m '>+1<CR>gv=gv
@@ -133,7 +123,7 @@ fun! TrimWhitespace()
 	call winrestview(l:save)
 endfun
 
-"autocmd BufWritePre * :call TrimWhitespace()
+autocmd BufWritePre * :call TrimWhitespace()
 
 " You can't stop me (force write changes to files which require write perms)
 cmap w!! w !sudo tee %
@@ -148,23 +138,24 @@ endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
 
-" syntax highlighting
+" syntax highlighting (bloated but does not load)
 Plug 'sheerun/vim-polyglot'
-" bracket pair same color
+" bracket pair same color (need)
 Plug 'junegunn/rainbow_parentheses.vim'
-" BESTEST colorscheme
+" BESTEST colorscheme 
 Plug 'gruvbox-community/gruvbox'
+" Neoculture 
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
-" status line
+" bye bye airline
 Plug 'itchyny/lightline.vim'
 " fuzzy find my way out of my problems
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" comment shortcut
+" comment shortcut (god gift)
 Plug 'tpope/vim-commentary'
-" Asynchronous Lint Engine
+" Asynchronous Lint Engine 
 Plug 'dense-analysis/ale'
-" Align by semicolor or equality symbols
+" OCD prevention
 Plug 'godlygeek/tabular'
 
 call plug#end()
@@ -184,12 +175,20 @@ let g:lsp_diagnostics_enabled = 0
 " #ALE 🍻 config
 
 let g:ale_completion_enabled = 0
-let g:ale_linters = {'javascript': ['eslint'], 'javascript.jsx': ['eslint'], 'typescript': ['eslint'] }
+" prettier too soft for my OCD
+let g:ale_linters = {
+  'javascript': ['eslint'], 
+  'javascript.jsx': ['eslint'], 
+  'typescript': ['eslint'] 
+}
+let b:ale_fixers = {
+  'javascript': ['eslint'], 
+  'typescript': ['eslint']
+}
 let g:ale_sign_error = '>>' " Less aggressive than the default '>>'
 let g:ale_sign_warning = '--'
 let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
 let g:ale_lint_on_insert_leave = 1
-let b:ale_fixers = {'javascript': ['eslint'], 'typescript': ['eslint']}
 let g:ale_fix_on_save = 0
 " g:ale_javascript_eslint_suppress_missing_config = 1
 let g:ale_pattern_options = {
@@ -224,8 +223,6 @@ let g:lightline = {'colorscheme': 'gruvbox'}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " #GRUVBOX config
 
-syntax on
-
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_invert_selection='0'
 let g:gruvbox_transparent_bg = 1
@@ -242,9 +239,10 @@ endif
 autocmd vimenter * highlight Normal guibg=NONE ctermbg=NONE
 
 colorscheme gruvbox
+" colorscheme catppuccin_mocha
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" #FZF config
+" #FZF config (Copy paste from a lot of places)
 
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
