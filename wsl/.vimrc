@@ -154,9 +154,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/rainbow_parentheses.vim'
 " BESTEST colorscheme
 Plug 'gruvbox-community/gruvbox'
-Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 " status line
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
 " fuzzy find my way out of my problems
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -217,9 +216,23 @@ let g:go_highlight_variable_declarations = 1
 let g:go_auto_sameids = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" #LIGHTLINE config
-set laststatus=2
-let g:lightline = {'colorscheme': 'gruvbox'}
+" #AIRLINE config
+
+" enable tabline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
+
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#hunks#enabled=0
+let g:airline#extensions#branch#enabled=1
+
+" enable powerline fonts
+let g:airline_powerline_fonts = 1
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " #GRUVBOX config

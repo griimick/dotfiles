@@ -19,9 +19,17 @@
 2. stow
 3. vim 8.2+ (floating window support)
 4. nvim (flavoured vim)
-5. ripgrep (flavoured grep)
-6. bat (flavoured cat)
-7. fd (flavoured find)
+
+## Color schemes
+
+1. [gruvbox](https://github.com/gruvbox-community/gruvbox)
+2. [catppuccin](https://github.com/catppuccin/catppuccin)
+
+## Experimental
+0. tmux and tpm
+1. ripgrep (flavoured grep)
+2. bat (flavoured cat)
+3. fd (flavoured find)
 
 ## References
 - [Using GNU Stow to manage your dotfiles](http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html)

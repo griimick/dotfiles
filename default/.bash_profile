@@ -26,6 +26,13 @@ cat << EOF
              (Loading your ~/.bash_profile...)
 EOF
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+if [ -z "$TMUX" ]; then
+    tmux attach -t default || tmux new -s default
+fi
+
 # nvim fork feels faster with all the plugins 
 # both refer same plugins and config, so 95% similar
 # 5% is all it takes to become BLAZINGLY FAST!!
