@@ -257,8 +257,8 @@ endif
 
 autocmd vimenter * highlight Normal guibg=NONE ctermbg=NONE
 
-colorscheme gruvbox
-" colorscheme catppuccin_mocha
+" colorscheme gruvbox
+colorscheme catppuccin_mocha
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " #FZF config (Copy paste from a lot of places)

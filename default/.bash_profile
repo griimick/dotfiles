@@ -64,3 +64,4 @@ alias erg='rg --color=always --vimgrep'
 export BAT_THEME="gruvbox-dark"
 
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,output,node_modules,*.swp,dist,*.coffee}/*" 2> /dev/null'
+. "$HOME/.cargo/env"
