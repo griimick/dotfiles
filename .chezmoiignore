@@ -1,4 +1,2 @@
-.github/
-Dockerfile
 README.md
 .config/nvim/plugin
