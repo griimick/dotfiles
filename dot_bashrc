@@ -130,3 +130,4 @@ export NVM_DIR="$HOME/.nvm"
 
 export PATH=$PATH:$HOME/.spicetify
 
+source <(gopass completion bash)
