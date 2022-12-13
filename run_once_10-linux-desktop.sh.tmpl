@@ -1,0 +1,47 @@
+{{- if and (eq .chezmoi.os "linux") (not .is_wsl) -}}
+#!/bin/bash
+set -e
+
+echo "## Install vim and neovim"
+sudo add-apt-repository -y ppa:neovim-ppa/stable
+sudo add-apt-repository -y ppa:jonathonf/vim
+
+sudo apt-get update
+sudo apt-get install -y \
+   curl \
+   neovim \
+   vim
+
+echo "## Install btop"
+curl -L https://github.com/aristocratos/btop/releases/download/v1.2.13/btop-x86_64-linux-musl.tbz -o btop.tbz
+tar -xjf btop.tbz
+cd btop
+sudo make install
+sudo make setuid
+cd ..
+rm -rf btop
+rm btop.tbz
+
+echo "## Installing sharkdp/bat"
+curl -L https://github.com/sharkdp/bat/releases/download/v0.22.1/bat-musl_0.22.1_amd64.deb -o bat.deb
+sudo dpkg -i bat.deb
+rm -f bat.deb
+
+echo "## Installing gopasspw/gopass"
+curl https://packages.gopass.pw/repos/gopass/gopass-archive-keyring.gpg | sudo tee /usr/share/keyrings/gopass-archive-keyring.gpg >/dev/null
+cat << EOF | sudo tee /etc/apt/sources.list.d/gopass.sources
+Types: deb
+URIs: https://packages.gopass.pw/repos/gopass
+Suites: stable
+Architectures: all amd64 arm64 armhf
+Components: main
+Signed-By: /usr/share/keyrings/gopass-archive-keyring.gpg
+EOF
+
+## Install
+sudo apt update
+sudo apt install -y \
+    gopass \
+    gopass-archive-keyring \
+
+{{- end -}}

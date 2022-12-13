@@ -1,21 +1,44 @@
 [".config/bat/themes/Catppuccin-mocha.tmTheme"]
-type = "file"
-url = "https://raw.githubusercontent.com/catppuccin/bat/main/Catppuccin-mocha.tmTheme"
-refreshPeriod = "24h"
+  type = "file"
+  url = "https://raw.githubusercontent.com/catppuccin/bat/main/Catppuccin-mocha.tmTheme"
+  refreshPeriod = "24h"
 
 [".config/btop/themes/catppuccin_mocha.theme"]
-type = "file"
-url = "https://raw.githubusercontent.com/catppuccin/btop/main/catppuccin_mocha.theme"
-refreshPeriod = "24h"
+ type = "file"
+ url = "https://raw.githubusercontent.com/catppuccin/btop/main/catppuccin_mocha.theme"
+ refreshPeriod = "24h"
 
-{{- if ne .chezmoi.os "linux" }}
-# exclude linux-specific externals
+[".nvm"]
+  type = "git-repo"
+  url = "https://github.com/nvm-sh/nvm.git"
+  refreshPeriod = "24h"
+    [".nvm" .pull]
+      args = ["--quiet"]
+
+[".local/bin/fzf"]
+  type = "file"
+  url = "https://github.com/junegunn/fzf/releases/download/{{ (gitHubLatestRelease "junegunn/fzf").TagName }}/fzf-{{ (gitHubLatestRelease "junegunn/fzf").TagName }}-linux_amd64.tar.gz"
+  executable = true
+  [".local/bin/fzf" .filter]
+    command = "tar"
+    args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "fzf"]
+
+[".bashrc.d/fzf-completion.bash"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/junegunn/fzf/{{ (gitHubLatestRelease "junegunn/fzf").TagName }}/shell/completion.bash"
+
+[".bashrc.d/fzf-key-bindings.bash"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/junegunn/fzf/{{ (gitHubLatestRelease "junegunn/fzf").TagName }}/shell/key-bindings.bash"
+
+[".local/bin/jq"]
+  type = "file"
+  url = "https://github.com/stedolan/jq/releases/download/{{ (gitHubLatestRelease "stedolan/jq").TagName }}/jq-linux64"
+  executable = true
 
 [".local/share/icons/Catppuccin-Mocha-Green-Cursors"]
-type = "archive"
-url = "https://github.com/catppuccin/cursors/raw/main/cursors/Catppuccin-Mocha-Green-Cursors.zip"
-exact = true
-stripComponents = 1
-refreshPeriod = "24h"
-
-{{- end }}
+  type = "archive"
+  url = "https://github.com/catppuccin/cursors/raw/main/cursors/Catppuccin-Mocha-Green-Cursors.zip"
+  exact = true
+  stripComponents = 1
+  refreshPeriod = "24h"
