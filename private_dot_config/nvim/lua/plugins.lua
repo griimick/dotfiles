@@ -13,26 +13,18 @@ packer.init {
 local use = packer.use
 
 use { "wbthomason/packer.nvim",
-    cmd = {
-        "PackerSnapshot",
-        "PackerSnapshotRollback",
-        "PackerSnapshotDelete",
-        "PackerInstall",
-        "PackerUpdate",
-        "PackerSync",
-        "PackerClean",
-        "PackerCompile",
-        "PackerStatus",
-        "PackerProfile",
-        "PackerLoad",
-    },
+    config = function() require("plugins") end,
 }
 
 use "lewis6991/impatient.nvim"
 use "nvim-telescope/telescope.nvim"
 use "max397574/better-escape.nvim"
 use { "akinsho/toggleterm.nvim" }
-use { "catppuccin/nvim", as = "catppuccin" }
+use { 
+	"catppuccin/nvim", 
+	as = "catppuccin",
+	config = function() vim.cmd.colorscheme "catppuccin" end,
+}
 use { 
     "nvim-treesitter/nvim-treesitter",
     run = function()
