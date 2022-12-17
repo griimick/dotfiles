@@ -36,9 +36,10 @@
   url = "https://github.com/stedolan/jq/releases/download/{{ (gitHubLatestRelease "stedolan/jq").TagName }}/jq-linux64"
   executable = true
 
-[".local/share/icons/Catppuccin-Mocha-Green-Cursors"]
-  type = "archive"
-  url = "https://github.com/catppuccin/cursors/raw/main/cursors/Catppuccin-Mocha-Green-Cursors.zip"
-  exact = true
-  stripComponents = 1
-  refreshPeriod = "24h"
+[".local/bin/rg"]
+  type = "file"
+  url = "https://github.com/BurntSushi/ripgrep/releases/download/{{ (gitHubLatestRelease "BurntSushi/ripgrep").TagName }}/ripgrep-{{ (gitHubLatestRelease "BurntSushi/ripgrep").TagName }}-x86_64-unknown-linux-musl.tar.gz"
+  executable = true
+  [".local/bin/rg" .filter]
+    command = "tar"
+    args = ["--extract", "--file", "/dev/stdin", "--gzip", "--strip-components=1", "--wildcards", "--to-stdout", "*/rg"]
