@@ -144,6 +144,7 @@ return {
 	enable_scroll_bar = false,
 	hide_tab_bar_if_only_one_tab = false,
 	tab_max_width = 50,
+	underline_thickness = "200%",
 	window_decorations = "RESIZE",
 	adjust_window_size_when_changing_font_size = false,
 	window_background_opacity = 0.95,
@@ -158,6 +159,6 @@ return {
 		brightness = 0.8,
 	},
 	clean_exit_codes = { 130 },
-	max_fps = 144,
+	max_fps = 75,
 	audible_bell = "Disabled",
 }

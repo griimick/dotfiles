@@ -45,11 +45,17 @@ use 'hrsh7th/nvim-cmp' {
 	},
 	config = "config.cmp",
 }
+use "akinsho/bufferline.nvim" {
+	config = "config.bufferline",
+	after = "catppuccin"
+}
 use "nvim-lualine/lualine.nvim" {
 	after = "catppuccin",
 	config = "config.lualine",
 }
 use 'nvim-telescope/telescope.nvim' {
+	module = "telescope",
+	cmd = "Telescope",
 	requires = { 'nvim-lua/plenary.nvim' },
 	config = "config.telescope",
 }
@@ -57,11 +63,17 @@ use 'nvim-telescope/telescope-fzf-native.nvim' {
 	run = 'make',
 	cond = vim.fn.executable 'make' == 1
 }
+use "p00f/nvim-ts-rainbow" {}
 use "nvim-treesitter/nvim-treesitter" {
 	run = function()
 		pcall(require('nvim-treesitter.install').update { with_sync = true })
 	end,
 	config = "config.treesitter",
+}
+use "numToStr/Comment.nvim" {
+	module = "Comment",
+	keys = { "gc" },
+	config = function() require("Comment").setup {} end,
 }
 use "catppuccin/nvim" {
 	as = "catppuccin",
