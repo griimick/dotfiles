@@ -40,10 +40,20 @@ use 'neovim/nvim-lspconfig' {
 use 'hrsh7th/nvim-cmp' {
 	requires = {
 		'hrsh7th/cmp-nvim-lsp',
+		"hrsh7th/cmp-cmdline",
+		"hrsh7th/cmp-buffer",
+		"hrsh7th/cmp-path",
 		'L3MON4D3/LuaSnip',
 		'saadparwaiz1/cmp_luasnip'
 	},
 	config = "config.cmp",
+}
+use "max397574/better-escape.nvim" {
+	config = "config.better-escape",
+}
+use "akinsho/toggleterm.nvim" {
+	tag = "*",
+	config = "config.toggleterm",
 }
 use "akinsho/bufferline.nvim" {
 	config = "config.bufferline",

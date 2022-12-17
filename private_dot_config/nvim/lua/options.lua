@@ -1,3 +1,4 @@
+vim.opt.hidden = true
 vim.opt.expandtab = true
 vim.opt.number = true
 vim.opt.relativenumber = true
