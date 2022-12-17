@@ -1,0 +1,28 @@
+{
+    "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+    "Lua.workspace.library": [
+        "/home/griimick/.config/nvim",
+        "/home/griimick/.local/share/nvim/site",
+        "/home/griimick/.local/share/nvim/site/pack/packer/start/LuaSnip",
+        "/home/griimick/.local/share/nvim/site/pack/packer/start/catppuccin",
+        "/home/griimick/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+        "/home/griimick/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
+        "/home/griimick/.local/share/nvim/site/pack/packer/start/fidget.nvim",
+        "/home/griimick/.local/share/nvim/site/pack/packer/start/impatient.nvim",
+        "/home/griimick/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+        "/home/griimick/.local/share/nvim/site/pack/packer/start/mason.nvim",
+        "/home/griimick/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+        "/home/griimick/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+        "/home/griimick/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+        "/home/griimick/.local/share/nvim/site/pack/packer/start/packer.nvim",
+        "/home/griimick/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+        "/home/griimick/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+        "/usr/share/nvim/runtime",
+        "/usr/share/nvim/runtime/pack/dist/opt/matchit",
+        "/lib/nvim",
+        "/home/griimick/.local/share/nvim/site/pack/packer/start/catppuccin/after",
+        "/home/griimick/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp/after",
+        "/home/griimick/.local/share/nvim/site/pack/packer/start/cmp_luasnip/after",
+        "${3rd}/luassert/library"
+    ]
+}

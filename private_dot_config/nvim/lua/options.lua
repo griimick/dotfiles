@@ -14,8 +14,6 @@ vim.opt.incsearch = true
 vim.opt.termguicolors = true
 
 -- gui/neovide stuff
-vim.opt.guifont = "Fantasque Sans Mono:h13"
-
 if vim.g.neovide then
     vim.g.neovide_cursor_vfx_mode = "pixiedust"
     vim.g.neovide_cursor_vfx_particle_density = 50
