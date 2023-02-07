@@ -6,7 +6,7 @@ echo "## Install vim and neovim"
 sudo add-apt-repository -y ppa:neovim-ppa/stable
 sudo add-apt-repository -y ppa:jonathonf/vim
 
-sudo apt-get update
+sudo apt-get update --allow-insecure-repositories
 sudo apt-get install -y \
    curl \
    neovim \
@@ -39,7 +39,7 @@ Signed-By: /usr/share/keyrings/gopass-archive-keyring.gpg
 EOF
 
 ## Install
-sudo apt update
+sudo apt update --allow-insecure-repositories
 sudo apt install -y \
     gopass \
     gopass-archive-keyring \
