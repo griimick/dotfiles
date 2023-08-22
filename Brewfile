@@ -12,8 +12,6 @@ brew "chezmoi"
 brew "fd"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# Interactive computing in Python
-brew "ipython"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Search tool like grep and The Silver Searcher
