@@ -1,5 +1,8 @@
+{- $email := promptString "Enter email" -}}
+
 [data]
     is_wsl = {{ (.chezmoi.kernel.osrelease | regexMatch "-microsoft-standard$") }}
+    email = "{{ $email }}"
 
 [edit]
 command = "vim"
