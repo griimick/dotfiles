@@ -1,0 +1,5 @@
+return {
+  {
+    "digitaltoad/vim-pug",
+  },
+}
