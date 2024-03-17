@@ -1,8 +1,7 @@
 ########################################################################
 
-
-
-
+# initialise .bashrc.d
+[[ -s "${HOME}/.bashrc.d/.init.sh" ]] && . "${HOME}/.bashrc.d/.init.sh"
 
 ########################################################################
 # ~/.bash_profile: executed by the command interpreter for login shells.

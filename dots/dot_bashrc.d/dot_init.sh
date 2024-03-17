@@ -1,4 +1,4 @@
-THIS_DIR=$(dirname "$0")
+THIS_DIR="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"
 
 # Colorful logging helper: INFO (green) level
 function info() {

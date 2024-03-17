@@ -1,0 +1,10 @@
+{- $email := promptString "Enter email" -}}
+{{- $binDir := joinPath .chezmoi.homeDir ".local/bin" }}
+
+[data]
+    is_wsl = {{ (.chezmoi.kernel.osrelease | regexMatch "-microsoft-standard$") }}
+    email = "{{ $email }}"
+    bindir  = "{{ $binDir | trim }}"
+
+[edit]
+    command = "vim"
