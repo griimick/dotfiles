@@ -1,5 +1,13 @@
 {{ $bdir := regexSplit ( list .chezmoi.homeDir "/" | join "" ) .bindir -1 | last }}
 
+[".bashrc.d/fzf-completion.sh"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/junegunn/fzf/{{ (gitHubLatestRelease "junegunn/fzf").TagName }}/shell/completion.bash"
+
+[".bashrc.d/fzf-key-bindings.sh"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/junegunn/fzf/{{ (gitHubLatestRelease "junegunn/fzf").TagName }}/shell/key-bindings.bash"
+
 [".config/bat/themes/Catppuccin-mocha.tmTheme"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/bat/main/themes/Catppuccin%20Mocha.tmTheme"
@@ -29,10 +37,10 @@
 ["{{- $bdir -}}/rg"]
   type = "file"
   url = "https://github.com/BurntSushi/ripgrep/releases/download/{{ (gitHubLatestRelease "BurntSushi/ripgrep").TagName }}/ripgrep-{{ (gitHubLatestRelease "BurntSushi/ripgrep").TagName }}-x86_64-unknown-linux-musl.tar.gz"
-  ["{{- $bdir -}}/rg" .filter]
   executable = true
+  ["{{- $bdir -}}/rg" .filter]
     command = "tar"
-    args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "ripgrep-{{ (gitHubLatestRelease "BurntSushi/ripgrep").TagName }}-x86_64-unknown-linux-musl/complete/rg.bash"]
+    args = ["--extract", "--file", "/dev/stdin", "--gzip", "--strip-components=1", "--wildcards", "--to-stdout", "*/rg"]
 
 ["{{- $bdir -}}/jq"]
   type = "file"
