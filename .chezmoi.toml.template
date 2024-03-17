@@ -1,0 +1,22 @@
+[data]
+    is_wsl = {{ (.chezmoi.kernel.osrelease | regexMatch "-microsoft-standard$") }}
+
+[edit]
+command = "vim"
+
+[diff]
+command = "vim"
+args = [ 
+  "-d", 
+  "{{`{{ .Destination }}`}}", 
+  "{{`{{ .Target }}`}}" 
+]
+
+[merge]
+command = "vim"
+args = [
+  "-d",
+  "{{`{{ .Destination }}`}}",
+  "{{`{{ .Source }}",
+  "{{ .Target }}`}}"
+]
