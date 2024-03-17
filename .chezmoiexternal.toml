@@ -1,5 +1,15 @@
 {{ $bdir := regexSplit ( list .chezmoi.homeDir "/" | join "" ) .bindir -1 | last }}
 
+[".config/bat/themes/Catppuccin-mocha.tmTheme"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/catppuccin/bat/main/Catppuccin-mocha.tmTheme"
+  refreshPeriod = "24h"
+
+[".config/btop/themes/catppuccin_mocha.theme"]
+ type = "file"
+ url = "https://raw.githubusercontent.com/catppuccin/btop/main/catppuccin_mocha.theme"
+ refreshPeriod = "24h"
+
 ["{{- $bdir -}}/starship"]
   type = "file"
   url = "https://github.com/starship/starship/releases/download/{{ (gitHubLatestRelease "starship/starship").TagName }}/starship-x86_64-unknown-linux-musl.tar.gz"
@@ -16,18 +26,10 @@
     command = "tar"
     args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "fzf"]
 
-[".bashrc.d/fzf-completion.bash"]
-  type = "file"
-  url = "https://raw.githubusercontent.com/junegunn/fzf/{{ (gitHubLatestRelease "junegunn/fzf").TagName }}/shell/completion.bash"
-
-[".bashrc.d/fzf-key-bindings.bash"]
-  type = "file"
-  url = "https://raw.githubusercontent.com/junegunn/fzf/{{ (gitHubLatestRelease "junegunn/fzf").TagName }}/shell/key-bindings.bash"
-
-["{{- $cdir -}}/rg"]
+["{{- $bdir -}}/rg"]
   type = "file"
   url = "https://github.com/BurntSushi/ripgrep/releases/download/{{ (gitHubLatestRelease "BurntSushi/ripgrep").TagName }}/ripgrep-{{ (gitHubLatestRelease "BurntSushi/ripgrep").TagName }}-x86_64-unknown-linux-musl.tar.gz"
-  ["{{- $cdir -}}/rg" .filter]
+  ["{{- $bdir -}}/rg" .filter]
     command = "tar"
     args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "ripgrep-{{ (gitHubLatestRelease "BurntSushi/ripgrep").TagName }}-x86_64-unknown-linux-musl/complete/rg.bash"]
 

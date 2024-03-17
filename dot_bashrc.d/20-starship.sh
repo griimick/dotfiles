@@ -1,4 +1,4 @@
 # Setup starship
-eval "$(starship init zsh)"
+eval "$(starship init bash)"
 starship preset nerd-font-symbols -o ~/.config/starship.toml
 
