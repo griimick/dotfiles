@@ -2,12 +2,12 @@
 
 [".config/bat/themes/Catppuccin-mocha.tmTheme"]
   type = "file"
-  url = "https://raw.githubusercontent.com/catppuccin/bat/main/Catppuccin-mocha.tmTheme"
+  url = "https://raw.githubusercontent.com/catppuccin/bat/main/themes/Catppuccin%20Mocha.tmTheme"
   refreshPeriod = "24h"
 
 [".config/btop/themes/catppuccin_mocha.theme"]
  type = "file"
- url = "https://raw.githubusercontent.com/catppuccin/btop/main/catppuccin_mocha.theme"
+ url = "https://raw.githubusercontent.com/catppuccin/btop/main/themes/catppuccin_mocha.theme"
  refreshPeriod = "24h"
 
 ["{{- $bdir -}}/starship"]
@@ -30,6 +30,7 @@
   type = "file"
   url = "https://github.com/BurntSushi/ripgrep/releases/download/{{ (gitHubLatestRelease "BurntSushi/ripgrep").TagName }}/ripgrep-{{ (gitHubLatestRelease "BurntSushi/ripgrep").TagName }}-x86_64-unknown-linux-musl.tar.gz"
   ["{{- $bdir -}}/rg" .filter]
+  executable = true
     command = "tar"
     args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "ripgrep-{{ (gitHubLatestRelease "BurntSushi/ripgrep").TagName }}-x86_64-unknown-linux-musl/complete/rg.bash"]
 
