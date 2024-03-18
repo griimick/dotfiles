@@ -33,3 +33,9 @@ One line personal dotfile setup for linux VMs
 4. [ripgrep](https://github.com/BurntSushi/ripgrep)
 5. [wezterm](https://github.com/wez/wezterm)
 6. [bat](https://github.com/sharkdp/bat)
+
+### References (Thanks 🙏):
+- [mel](https://codeberg.org/mel/dotfiles)
+- [detro](https://github.com/detro/.bashrc.d)
+- [pigeon](https://github.com/backwardspy/dots)
+- [winston](https://github.com/nekowinston/dotfiles/tree/chezmoi)
