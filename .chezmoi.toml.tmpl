@@ -1,8 +1,11 @@
 {{- $binDir := joinPath .chezmoi.homeDir ".local/bin" }}
+{{- $compDir := joinPath .chezmoi.homeDir ".local/share/bash-completion" -}}
 
 [data]
-    is_wsl = {{ (.chezmoi.kernel.osrelease | regexMatch "-microsoft-standard$") }}
+    name = {{ promptString "name" | quote }}
+    email = {{ promptString "email" | quote }}
     bindir  = "{{ $binDir | trim }}"
+    compdir = "{{ $compDir | trim }}"
 
 [edit]
-    command = "vim"
+    command = "nvim"

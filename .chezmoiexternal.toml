@@ -1,12 +1,5 @@
 {{ $bdir := regexSplit ( list .chezmoi.homeDir "/" | join "" ) .bindir -1 | last }}
-
-[".bashrc.d/fzf-completion.sh"]
-  type = "file"
-  url = "https://raw.githubusercontent.com/junegunn/fzf/{{ (gitHubLatestRelease "junegunn/fzf").TagName }}/shell/completion.bash"
-
-[".bashrc.d/fzf-key-bindings.sh"]
-  type = "file"
-  url = "https://raw.githubusercontent.com/junegunn/fzf/{{ (gitHubLatestRelease "junegunn/fzf").TagName }}/shell/key-bindings.bash"
+{{ $cdir := regexSplit ( list .chezmoi.homeDir "/" | join "" ) .compdir -1 | last }}
 
 [".config/bat/themes/Catppuccin-mocha.tmTheme"]
   type = "file"
@@ -17,6 +10,8 @@
  type = "file"
  url = "https://raw.githubusercontent.com/catppuccin/btop/main/themes/catppuccin_mocha.theme"
  refreshPeriod = "24h"
+
+{{ if eq .chezmoi.os "linux" }}
 
 ["{{- $bdir -}}/starship"]
   type = "file"
@@ -34,6 +29,14 @@
     command = "tar"
     args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "fzf"]
 
+["{{- $cdir -}}/fzf"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/junegunn/fzf/{{ (gitHubLatestRelease "junegunn/fzf").TagName }}/shell/completion.bash"
+
+[".bashrc.d/50-fzf-key-bindings.sh"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/junegunn/fzf/{{ (gitHubLatestRelease "junegunn/fzf").TagName }}/shell/key-bindings.bash"
+
 ["{{- $bdir -}}/rg"]
   type = "file"
   url = "https://github.com/BurntSushi/ripgrep/releases/download/{{ (gitHubLatestRelease "BurntSushi/ripgrep").TagName }}/ripgrep-{{ (gitHubLatestRelease "BurntSushi/ripgrep").TagName }}-x86_64-unknown-linux-musl.tar.gz"
@@ -46,3 +49,5 @@
   type = "file"
   url = "https://github.com/stedolan/jq/releases/download/{{ (gitHubLatestRelease "stedolan/jq").TagName }}/jq-linux64"
   executable = true
+
+{{ end }}

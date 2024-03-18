@@ -1,0 +1,5 @@
+# https://serverfault.com/questions/506612/standard-place-for-user-defined-bash-completion-d-scripts
+# for bash-completion versions under 2.9
+for bcfile in {{ .compdir -}}/* ; do
+  [ -f "$bcfile" ] && . $bcfile
+done
