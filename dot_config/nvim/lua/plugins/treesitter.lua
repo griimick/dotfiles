@@ -1,5 +1,5 @@
 return {
-  {
-    "digitaltoad/vim-pug",
-  },
+	{
+		"digitaltoad/vim-pug",
+	},
 }
