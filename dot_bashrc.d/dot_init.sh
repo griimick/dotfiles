@@ -1,4 +1,4 @@
-THIS_DIR="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"
+THIS_DIR="$(dirname "${BASH_SOURCE[0]:-$0}")"
 
 # Colorful logging helper: INFO (green) level
 function info() {
@@ -22,16 +22,15 @@ function nln() {
 
 # Common utilities
 case "${OSTYPE}" in
-	solaris*) OSNAME="SOLARIS" ;;
-	darwin*)  OSNAME="MACOSX" ;;
-	linux*)   OSNAME="LINUX" ;;
-	bsd*)     OSNAME="BSD" ;;
-	msys*)    OSNAME="WINDOWS" ;;
-	*)        OSNAME="${OSTYPE}" ;;
+solaris*) OSNAME="SOLARIS" ;;
+darwin*) OSNAME="MACOSX" ;;
+linux*) OSNAME="LINUX" ;;
+bsd*) OSNAME="BSD" ;;
+msys*) OSNAME="WINDOWS" ;;
+*) OSNAME="${OSTYPE}" ;;
 esac
 
 # Source all the 'bashrc.d' files
-for BASHRC_D_FILE in `ls ${THIS_DIR}/*.sh`; do
+for BASHRC_D_FILE in $(ls ${THIS_DIR}/*.sh); do
 	source $BASHRC_D_FILE
 done
-
