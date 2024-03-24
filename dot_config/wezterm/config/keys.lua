@@ -131,7 +131,7 @@ M.apply = function(c)
 	c.leader = {
 		key = "s",
 		mods = "CTRL",
-		timeout_milliseconds = math.maxinteger,
+		timeout_milliseconds = 5000,
 	}
 	c.keys = shortcuts
 	c.disable_default_key_bindings = true
