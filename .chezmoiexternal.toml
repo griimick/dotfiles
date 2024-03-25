@@ -13,22 +13,6 @@
 
 {{ if eq .chezmoi.os "linux" }}
 
-["{{- $bdir -}}/starship"]
-  type = "file"
-  url = "https://github.com/starship/starship/releases/download/{{ (gitHubLatestRelease "starship/starship").TagName }}/starship-x86_64-unknown-linux-musl.tar.gz"
-  executable = true
-  ["{{- $bdir -}}/starship" .filter]
-    command = "tar"
-    args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "starship"]
-
-["{{- $bdir -}}/fzf"]
-  type = "file"
-  url = "https://github.com/junegunn/fzf/releases/download/{{ (gitHubLatestRelease "junegunn/fzf").TagName }}/fzf-{{ (gitHubLatestRelease "junegunn/fzf").TagName }}-linux_amd64.tar.gz"
-  executable = true
-  ["{{- $bdir -}}/fzf" .filter]
-    command = "tar"
-    args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "fzf"]
-
 ["{{- $cdir -}}/fzf"]
   type = "file"
   url = "https://raw.githubusercontent.com/junegunn/fzf/{{ (gitHubLatestRelease "junegunn/fzf").TagName }}/shell/completion.bash"
@@ -36,6 +20,24 @@
 [".bashrc.d/50-fzf-key-bindings.sh"]
   type = "file"
   url = "https://raw.githubusercontent.com/junegunn/fzf/{{ (gitHubLatestRelease "junegunn/fzf").TagName }}/shell/key-bindings.bash"
+
+
+["{{- $bdir -}}/fzf"]
+  type = "file"
+  url = "https://github.com/junegunn/fzf/releases/download/{{ (gitHubLatestRelease "junegunn/fzf").TagName }}/fzf-{{ (gitHubLatestRelease "junegunn/fzf").TagName }}-{{ .chezmoi.os }}_{{ .chezmoi.arch }}.tar.gz"
+  executable = true
+  ["{{- $bdir -}}/fzf" .filter]
+    command = "tar"
+    args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "fzf"]
+
+
+["{{- $bdir -}}/starship"]
+  type = "file"
+  url = "https://github.com/starship/starship/releases/download/{{ (gitHubLatestRelease "starship/starship").TagName }}/starship-x86_64-unknown-linux-musl.tar.gz"
+  executable = true
+  ["{{- $bdir -}}/starship" .filter]
+    command = "tar"
+    args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "starship"]
 
 ["{{- $bdir -}}/rg"]
   type = "file"
@@ -48,6 +50,40 @@
 ["{{- $bdir -}}/jq"]
   type = "file"
   url = "https://github.com/stedolan/jq/releases/download/{{ (gitHubLatestRelease "stedolan/jq").TagName }}/jq-linux64"
+  executable = true
+
+{{ end }}
+
+{{ if eq .chezmoi.os "darwin" }}
+
+["{{- $cdir -}}/fzf"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/junegunn/fzf/{{ (gitHubLatestRelease "junegunn/fzf").TagName }}/shell/completion.zsh"
+
+[".bashrc.d/50-fzf-key-bindings.sh"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/junegunn/fzf/{{ (gitHubLatestRelease "junegunn/fzf").TagName }}/shell/key-bindings.zsh"
+
+
+["{{- $bdir -}}/starship"]
+  type = "file"
+  url = "https://github.com/starship/starship/releases/download/{{ (gitHubLatestRelease "starship/starship").TagName }}/starship-x86_64-apple-darwin.tar.gz"
+  executable = true
+  ["{{- $bdir -}}/starship" .filter]
+    command = "tar"
+    args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "starship"]
+
+["{{- $bdir -}}/rg"]
+  type = "file"
+  url = "https://github.com/BurntSushi/ripgrep/releases/download/{{ (gitHubLatestRelease "BurntSushi/ripgrep").TagName }}/ripgrep-{{ (gitHubLatestRelease "BurntSushi/ripgrep").TagName }}-aarch64-apple-darwin.tar.gz"
+  executable = true
+  ["{{- $bdir -}}/rg" .filter]
+    command = "tar"
+    args = ["--extract", "--file", "/dev/stdin", "--gzip", "--strip-components=1", "--to-stdout", "*/rg"]
+
+["{{- $bdir -}}/jq"]
+  type = "file"
+  url = "https://github.com/stedolan/jq/releases/download/{{ (gitHubLatestRelease "stedolan/jq").TagName }}/jq-osx-amd64"
   executable = true
 
 {{ end }}

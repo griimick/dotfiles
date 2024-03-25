@@ -126,6 +126,22 @@ for k, _ in pairs(key_tables) do
 	table.insert(key_tables[k], { key = "c", mods = "CTRL", action = "PopKeyTable" })
 end
 
+map(
+	"E",
+	"CTRL|SHIFT",
+	act.PromptInputLine({
+		description = "Enter new name for tab",
+		action = wezterm.action_callback(function(window, pane, line)
+			-- line will be `nil` if they hit escape without entering anything
+			-- An empty string if they just hit enter
+			-- Or the actual line of text they wrote
+			if line then
+				window:active_tab():set_title(line)
+			end
+		end),
+	})
+)
+
 local M = {}
 M.apply = function(c)
 	c.leader = {

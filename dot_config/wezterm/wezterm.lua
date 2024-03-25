@@ -19,7 +19,7 @@ c.audible_bell = "Disabled"
 c.default_cursor_style = "BlinkingBar"
 c.inactive_pane_hsb = { brightness = 0.90 }
 
-wezterm.plugin.require("https://github.com/nekowinston/wezterm-bar").apply_to_config(c, {
+wezterm.plugin.require("https://github.com/griimick/wezterm-bar").apply_to_config(c, {
 	max_width = 32,
 	dividers = "arrows",
 })
