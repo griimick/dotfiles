@@ -16,7 +16,6 @@ c.window_decorations = "RESIZE"
 c.window_padding = { left = 0, right = 0, top = 50, bottom = 0 }
 c.adjust_window_size_when_changing_font_size = false
 c.audible_bell = "Disabled"
-c.default_cursor_style = "BlinkingBar"
 c.inactive_pane_hsb = { brightness = 0.90 }
 
 wezterm.plugin.require("https://github.com/griimick/wezterm-bar").apply_to_config(c, {
