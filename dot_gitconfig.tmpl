@@ -1,6 +1,11 @@
 [user]
     email = {{ .email | quote }}
     name = {{ .name | quote }}
+    signingkey = ~/.ssh/id_ed25519.pub
+[gpg]
+    format = ssh
+[commit]
+    gpgsign = true
 [core]
     editor = vim
     whitespace = space-before-tab,trailing-space
