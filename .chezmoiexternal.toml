@@ -24,7 +24,7 @@
 
 ["{{- $bdir -}}/fzf"]
   type = "file"
-  url = "https://github.com/junegunn/fzf/releases/download/{{ (gitHubLatestRelease "junegunn/fzf").TagName }}/fzf-{{ (gitHubLatestRelease "junegunn/fzf").TagName }}-{{ .chezmoi.os }}_{{ .chezmoi.arch }}.tar.gz"
+  url = "https://github.com/junegunn/fzf/releases/download/v0.58.0/fzf-0.58.0-linux_amd64.tar.gz"
   executable = true
   ["{{- $bdir -}}/fzf" .filter]
     command = "tar"
