@@ -1,5 +1,6 @@
 return {
 	{
-		"digitaltoad/vim-pug",
-	},
+		'nvim-treesitter/nvim-treesitter',
+		branch = 'master',
+	}
 }
