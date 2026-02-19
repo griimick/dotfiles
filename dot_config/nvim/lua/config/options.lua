@@ -3,6 +3,7 @@
 -- Add any additional options here
 local opt = vim.opt
 
+vim.g.lazyvim_picker = "telescope"
 opt.shiftwidth = 2
 opt.tabstop = 2
 opt.softtabstop = 2
