@@ -1,7 +1,6 @@
 return {
 	{
 		"catppuccin/nvim",
-		tag = "v1.10.0",
 		lazy = false,
 		name = "catppuccin",
 		opts = {
@@ -18,7 +17,7 @@ return {
 	{
 		"LazyVim/LazyVim",
 		opts = {
-			colorscheme = "catppuccin",
+			colorscheme = "catppuccin-nvim",
 		},
 	},
 }
