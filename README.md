@@ -34,7 +34,7 @@ You will be prompted for your name and email (used for git).
 3. [fzf](https://github.com/junegunn/fzf) with generated shell completion and key bindings
 4. [ripgrep](https://github.com/BurntSushi/ripgrep)
 5. [wezterm](https://github.com/wez/wezterm) config
-6. Catppuccin Mocha themes for [bat](https://github.com/sharkdp/bat) and btop (themes only, the tools are not installed)
+6. [bat](https://github.com/sharkdp/bat) and [btop](https://github.com/aristocratos/btop) with Catppuccin Mocha themes
 7. modular `~/.bashrc.d`, sourced from `~/.bashrc` by a chezmoi script
 8. [opencode](https://opencode.ai) config and Claude Code settings
 
