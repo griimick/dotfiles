@@ -1,11 +1,17 @@
 {{- $binDir := joinPath .chezmoi.homeDir ".local/bin" }}
 {{- $compDir := joinPath .chezmoi.homeDir ".local/share/bash-completion" -}}
+{{- /* homelab: always-on home box running services; workstation: day-to-day machines; sandbox: throwaway VMs */ -}}
+{{- $profile := promptChoiceOnce . "profile" "Machine profile" (list "homelab" "workstation" "sandbox") "workstation" -}}
 
 [data]
-    name = {{ promptString "name" | quote }}
-    email = {{ promptString "email" | quote }}
+    name = {{ promptStringOnce . "name" "name" | quote }}
+    email = {{ promptStringOnce . "email" "email" | quote }}
+    profile = {{ $profile | quote }}
     bindir  = "{{ $binDir | trim }}"
     compdir = "{{ $compDir | trim }}"
+{{- if eq $profile "homelab" }}
+    opencodePassword = {{ promptStringOnce . "opencodePassword" "opencode password" | quote }}
+{{- end }}
 
 [edit]
     command = "nvim"

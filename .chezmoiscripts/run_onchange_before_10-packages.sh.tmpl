@@ -1,0 +1,13 @@
+{{- if eq .chezmoi.os "linux" -}}
+#!/bin/bash
+set -euo pipefail
+
+sudo apt-get update
+sudo apt-get install -y tmux git curl build-essential unzip jq htop
+
+# Node.js (for Claude Code / opencode). Check nodesource docs for the current version.
+if ! command -v node >/dev/null; then
+  curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+  sudo apt-get install -y nodejs
+fi
+{{- end }}

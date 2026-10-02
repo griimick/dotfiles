@@ -1,5 +1,10 @@
 README.md
 install.sh
+{{- $profile := get . "profile" | default "workstation" }}
 {{ if ne .chezmoi.os "linux" }}
 .local/bin/nvim
+{{ end }}
+{{ if ne $profile "homelab" }}
+.config/systemd/user/opencode-serve.service
+.bashrc.d/60-opencode.sh
 {{ end }}

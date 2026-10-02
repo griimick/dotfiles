@@ -1,0 +1,26 @@
+{{- if eq (get . "profile") "homelab" -}}
+#!/usr/bin/env bash
+set -euo pipefail
+
+ENV_FILE="${HOME}/.config/opencode/serve.env"
+mkdir -p "$(dirname "$ENV_FILE")"
+
+if [ -f "$ENV_FILE" ]; then
+    echo "[INFO] ${ENV_FILE} already exists"
+    exit 0
+fi
+
+PASSWORD="$(cat <<'PW_EOF'
+{{ .opencodePassword }}
+PW_EOF
+)"
+
+if [ -z "$PASSWORD" ] || [ "$PASSWORD" = "your-password-here" ]; then
+    read -rsp "Enter opencode password: " PASSWORD
+    echo ""
+fi
+
+echo "OPENCODE_SERVER_PASSWORD=${PASSWORD}" > "$ENV_FILE"
+chmod 600 "$ENV_FILE"
+echo "[INFO] Created ${ENV_FILE}"
+{{- end }}

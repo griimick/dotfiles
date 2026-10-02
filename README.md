@@ -25,7 +25,20 @@ One line personal dotfile setup for linux VMs
 sh -c "$(curl -fsLS get.chezmoi.io)" -- -b $HOME/.local/bin init --apply griimick
 ```
 
-You will be prompted for your name and email (used for git).
+You will be prompted for your name, email (used for git) and a machine profile.
+
+### Profiles
+
+The profile is asked once at `chezmoi init` and saved in `~/.config/chezmoi/chezmoi.toml`:
+
+| Profile | For | Extra |
+|---|---|---|
+| `workstation` (default) | laptops and desktops you sit at | |
+| `homelab` | the always-on home box | opencode server (systemd user service, alias) and its password |
+| `sandbox` | throwaway VMs | |
+
+To skip the prompt: `chezmoi init --apply --promptChoice profile=homelab griimick`.
+Machines initialised before profiles existed behave like `workstation`.
 
 ### What you get
 
@@ -36,7 +49,8 @@ You will be prompted for your name and email (used for git).
 5. [wezterm](https://github.com/wez/wezterm) config
 6. [bat](https://github.com/sharkdp/bat) and [btop](https://github.com/aristocratos/btop) with Catppuccin Mocha themes
 7. modular `~/.bashrc.d`, sourced from `~/.bashrc` by a chezmoi script
-8. [opencode](https://opencode.ai) config and Claude Code settings
+8. [opencode](https://opencode.ai) and [Claude Code](https://claude.com/claude-code), installed on every machine, with their settings
+9. [gh](https://cli.github.com), plus a per-machine SSH key generated on first apply (add it to GitHub as an authentication and a signing key)
 
 Binaries are downloaded by `.chezmoiexternal.toml` into `~/.local/bin`, so make sure it is on your `PATH`.
 
