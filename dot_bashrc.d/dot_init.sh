@@ -31,6 +31,6 @@ msys*) OSNAME="WINDOWS" ;;
 esac
 
 # Source all the 'bashrc.d' files
-for BASHRC_D_FILE in $(ls ${THIS_DIR}/*.sh); do
-	source $BASHRC_D_FILE
+for BASHRC_D_FILE in "${THIS_DIR}"/*.sh; do
+	source "$BASHRC_D_FILE"
 done

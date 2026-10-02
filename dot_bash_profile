@@ -1,9 +1,4 @@
 ########################################################################
-
-# initialise .bashrc.d
-[[ -s "${HOME}/.bashrc.d/.init.sh" ]] && . "${HOME}/.bashrc.d/.init.sh"
-
-########################################################################
 # ~/.bash_profile: executed by the command interpreter for login shells.
 # see /usr/share/doc/bash/examples/startup-files for examples.
 # the files are located in the bash-doc package.
