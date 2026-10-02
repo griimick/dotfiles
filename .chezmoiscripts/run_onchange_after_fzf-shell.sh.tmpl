@@ -1,0 +1,8 @@
+{{- if eq .chezmoi.os "linux" -}}
+#!/bin/bash
+set -euo pipefail
+
+# fzf release: {{ (gitHubLatestRelease "junegunn/fzf").TagName }}
+# regenerate shell completion and key bindings whenever fzf is updated
+"${HOME}/.local/bin/fzf" --bash > "${HOME}/.bashrc.d/50-fzf-shell.sh"
+{{- end }}
