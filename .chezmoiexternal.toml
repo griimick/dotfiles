@@ -43,6 +43,12 @@
   path = "./btop/bin/btop"
   executable = true
 
+["{{- $bdir -}}/gh"]
+  type = "archive-file"
+  url = "https://github.com/cli/cli/releases/download/{{ (gitHubLatestRelease "cli/cli").TagName }}/gh_{{ trimPrefix "v" (gitHubLatestRelease "cli/cli").TagName }}_linux_amd64.tar.gz"
+  path = "gh_{{ trimPrefix "v" (gitHubLatestRelease "cli/cli").TagName }}_linux_amd64/bin/gh"
+  executable = true
+
 # neovim: the release tarball is split into bin/share/lib so the binary finds its runtime
 {{- range $dir := list "bin" "share" "lib" }}
 
